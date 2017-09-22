@@ -99,8 +99,6 @@ namespace AwesomationLib
                 IWebDriver webDriver = new InternetExplorerDriver(IEO);
                 webDriver.Manage().Window.Maximize();
                 webDriver.Navigate().GoToUrl("https://www.google.com");
-                webDriver.Quit();
-                Console.WriteLine(webDriver.Title);
                 Assert.AreEqual("Google", webDriver.Title);
                 webDriver.Close(); //This method is used to close the current open window. It closes the current open window on which driver has focus on.
                 webDriver.Quit(); //This method is used to destroy the instance of WebDriver. It closes all browser windows associated with that driver and safely ends the session.
