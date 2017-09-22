@@ -2,12 +2,12 @@
 
 namespace AwesomationRunner
 {
-    class Program
+    class AwesomationRunnerMain
     {
         static void Main(string[] args)
         {
             #region Debug Driver Initialization
-            InitializeWebDriver.DebugDriverInit();
+            //InitializeWebDriver.DebugDriverInit();
             #endregion
         }
     }

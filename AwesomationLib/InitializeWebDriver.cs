@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.PhantomJS;
+using NUnit.Framework;
 
 namespace AwesomationLib
 {
@@ -16,28 +17,33 @@ namespace AwesomationLib
             {
                 IWebDriver webDriver = new FirefoxDriver();
                 webDriver.Manage().Window.Maximize();
+                //webDriver.Quit();
             }
             else if (browser == "Chrome")
             {
                 IWebDriver webDriver = new ChromeDriver();
                 webDriver.Manage().Window.Maximize();
+                //webDriver.Quit();
             }
             else if (browser == "IE")
             {
                 InternetExplorerOptions IEO = new InternetExplorerOptions { IgnoreZoomLevel = true };
                 IWebDriver webDriver = new InternetExplorerDriver(IEO);
                 webDriver.Manage().Window.Maximize();
+                //webDriver.Quit();
             }
             else if (browser == "Edge")
             {
                 EdgeOptions EO = new EdgeOptions();
                 IWebDriver webDriver = new EdgeDriver(EO);
                 webDriver.Manage().Window.Maximize();
+                //webDriver.Quit();
             }
             else if (browser == "PhantomJS")
             {
                 IWebDriver webDriver = new PhantomJSDriver();
                 webDriver.Manage().Window.Maximize();
+                //webDriver.Quit();
             }
             else
                 Console.WriteLine("Valid arguments are: FF, Chrome, IE, Edge and PhantomJS.");
@@ -79,6 +85,29 @@ namespace AwesomationLib
                 Console.WriteLine("\r\n" + ex + "\r\n");
                 Console.WriteLine("Press ENTER to exit." + "\r\n");
                 Console.ReadLine();
+            }
+        }
+        #endregion
+
+        #region Debug NUnit Test
+        [Test]
+        public static void DebugNUnitTest()
+        {
+            try
+            {
+                InternetExplorerOptions IEO = new InternetExplorerOptions { IgnoreZoomLevel = true };
+                IWebDriver webDriver = new InternetExplorerDriver(IEO);
+                webDriver.Manage().Window.Maximize();
+                webDriver.Navigate().GoToUrl("https://www.google.com");
+                webDriver.Quit();
+                Console.WriteLine(webDriver.Title);
+                Assert.AreEqual("Google", webDriver.Title);
+                webDriver.Close(); //This method is used to close the current open window. It closes the current open window on which driver has focus on.
+                webDriver.Quit(); //This method is used to destroy the instance of WebDriver. It closes all browser windows associated with that driver and safely ends the session.
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
         #endregion
