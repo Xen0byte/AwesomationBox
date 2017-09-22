@@ -1,0 +1,2 @@
+# AwesomationBox
+.NET Automation Framework
